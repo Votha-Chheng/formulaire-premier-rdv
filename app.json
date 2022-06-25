@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "form-dentiste-tsc",
+    "slug": "form-dentiste-tsc",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
