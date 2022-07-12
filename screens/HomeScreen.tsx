@@ -3,11 +3,11 @@ import React, { FC, useEffect, useState } from 'react'
 import { Button } from 'react-native-paper'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useDispatch } from 'react-redux'
-import { resetIdentity } from '../store/identity'
 import { globalStyles } from '../globalStyles'
 import { StackNavigationProp } from '@react-navigation/stack'
 import { RootStackParamList } from '../App'
 import { useNavigation } from '@react-navigation/native'
+import { resetIdentity } from '../store/adultState/identity'
 
 export type HomeScreenProps = StackNavigationProp<RootStackParamList, "Home">
 
@@ -39,7 +39,7 @@ const HomeScreen:FC = () => {
   }
   
   const pressNouveauPatientAdulte = ()=>{
-    //dispatch(resetIdentity())
+    dispatch(resetIdentity())
     navigation.navigate("AdultForm")
   }
   const pressNouveauPatientEnfant = ()=>{

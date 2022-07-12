@@ -14,6 +14,7 @@ import identityChildReducer from './childState/identityChild'
 import identityAccompagnantReducer from './childState/identityAccompagnant'
 import consultationChildReducer from './childState/consultationChild'
 import etatSanteChildReducer from './childState/etatSanteChild'
+import etatBuccoDentaireChildReducer from './childState/etatBuccoDentaire'
 
 
 
@@ -32,7 +33,8 @@ const store = configureStore({
     identityChild : identityChildReducer,
     identityAccompagnant : identityAccompagnantReducer,
     consultationChild : consultationChildReducer,
-    etatDeSanteChild : etatSanteChildReducer
+    etatDeSanteChild : etatSanteChildReducer,
+    etatBuccoDentaireChild: etatBuccoDentaireChildReducer
   }
 })
 
