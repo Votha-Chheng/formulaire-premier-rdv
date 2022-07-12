@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux'
 import { onValidateLengthInput } from '../../utils'
 
 export type LabelInputForTextProps = {
-  statement?: string|number
+  statement: any
   question: string 
   reducerFromStore: Function
   flexRow: boolean

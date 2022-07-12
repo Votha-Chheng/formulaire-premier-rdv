@@ -4,13 +4,14 @@ import Label from '../componentsWithProps/Label'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../store/store'
 import RadioComponent from '../componentsWithProps/RadioComponent'
-import { getParentTwo, getParentTwoOuiNon, getResponsablesParents } from '../../store/childState/identityAccompagnant'
+import { getParentTwo, getParentTwoOuiNon, getResponsablesParents, getSituationFamiliale } from '../../store/childState/identityAccompagnant'
 import { globalStyles } from '../../globalStyles'
 import ParentOneId from './ParentOneId'
 import ParentTwoId from './ParentTwoId'
+import MultipleRadioComponent from '../componentsWithProps/MultipleRadioComponent'
 
 const IdentityAccompagnant: FC = () => {
-  const {responsablesParents, parentTwoOuiNon, parentTwo} = useSelector((state: RootState) => state.identityAccompagnant)
+  const {responsablesParents, parentTwoOuiNon, situationFamiliale} = useSelector((state: RootState) => state.identityAccompagnant)
   const dispatch = useDispatch()
 
   return (
@@ -63,7 +64,18 @@ const IdentityAccompagnant: FC = () => {
         parentTwoOuiNon === true &&
         <ParentTwoId/>
       }
-      
+
+      <View style={{marginBottom:30}}>
+        <Label
+          statement={situationFamiliale}
+          question="Quelle est la situation familiale de l'enfant ? "
+        />
+        <MultipleRadioComponent choix="Vit en permanence avec ses deux parents" valueState={situationFamiliale} dispatcher={dispatch} reducerFromStore={getSituationFamiliale}/>
+        <MultipleRadioComponent choix="Garde alternée" valueState={situationFamiliale} dispatcher={dispatch} reducerFromStore={getSituationFamiliale}/>
+        <MultipleRadioComponent choix="Vit en permanence avec un seul de ses parents" valueState={situationFamiliale} dispatcher={dispatch} reducerFromStore={getSituationFamiliale}/>
+        <MultipleRadioComponent choix="Ne vit pas au domicile du/des parent(s)" valueState={situationFamiliale} dispatcher={dispatch} reducerFromStore={getSituationFamiliale}/>
+        <MultipleRadioComponent choix="Autre" valueState={situationFamiliale} dispatcher={dispatch} reducerFromStore={getSituationFamiliale}/>
+      </View>
       
     </View>
   )

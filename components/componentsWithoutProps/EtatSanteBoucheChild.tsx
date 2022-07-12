@@ -60,6 +60,7 @@ const EtatSanteBoucheChild: FC = () => {
         <CheckBoxComponent title="Matin" maladies={momentsBrossageDents} handleChangeValues={addRadioItem}  dispatcher={dispatch} reducerFromStore={getMomentsBrossageDents}/>
         <CheckBoxComponent title="Midi" maladies={momentsBrossageDents} handleChangeValues={addRadioItem} dispatcher={dispatch} reducerFromStore={getMomentsBrossageDents}/>
         <CheckBoxComponent title="Soir" maladies={momentsBrossageDents} handleChangeValues={addRadioItem} dispatcher={dispatch} reducerFromStore={getMomentsBrossageDents}/>
+        <CheckBoxComponent title="Jamais" maladies={momentsBrossageDents} handleChangeValues={addRadioItem} dispatcher={dispatch} reducerFromStore={getMomentsBrossageDents}/>
       </View>
 
       <LabelWithRadio
@@ -87,7 +88,7 @@ const EtatSanteBoucheChild: FC = () => {
 
       <LabelWithRadio
         statementForLabel={dentEnleveOuiNon}
-        questionForLabel="Un dentiste kui a-t-il déjà enlevé une dent (de lait ou définitive) ?"
+        questionForLabel="Un dentiste lui a-t-il déjà enlevé une dent (de lait ou définitive) ?"
         reducerFromStore={getDentEnleveOuiNon}
       />
 

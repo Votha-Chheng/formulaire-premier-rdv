@@ -31,13 +31,16 @@ const AllergiesMedicChild: FC = () => {
           }}
         />
       </View>
-      <ComponentAutres
-        stateArray={listeAllergiesMedicaments} 
-        reducerFromStore={getListeAllergiesMedicaments} 
-        extraItem="À quel(s) médicament est-il allergique ?" 
-        placeHolder="Écrivez ici le médicament..."
-        width={450}
-      />
+      {
+        allergiesMedicamentsOuiNon === true &&
+        <ComponentAutres
+          stateArray={listeAllergiesMedicaments} 
+          reducerFromStore={getListeAllergiesMedicaments} 
+          extraItem="À quel(s) médicament est-il allergique ?" 
+          placeHolder="Écrivez ici le médicament..."
+          width={450}
+        />
+      }
     </View>
   )
 }

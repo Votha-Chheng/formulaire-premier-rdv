@@ -12,9 +12,10 @@ import { useDispatch } from 'react-redux'
 export type InfoParentProps = {
   whichParent : Parent
   reducerFromStore : Function
+  parentTwo?: boolean
 }
 
-const InfoParent:FC<InfoParentProps> = ({whichParent, reducerFromStore}) => {
+const InfoParent:FC<InfoParentProps> = ({whichParent, reducerFromStore, parentTwo = false}) => {
 
   const dispatch = useDispatch()
 
@@ -62,7 +63,7 @@ const InfoParent:FC<InfoParentProps> = ({whichParent, reducerFromStore}) => {
 
       <View>
         <Label
-          question="Avez-vous une adresse e-mail ?"
+          question={ parentTwo===true ?"A-t-il une adresse e-mail ?" : "Avez-vous une adresse e-mail ?"}
           statement={whichParent.emailOuiNon}
         />
         <RadioComponent

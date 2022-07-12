@@ -242,20 +242,13 @@ const IdentityChild:FC = () => {
         width={150}
       />
       
-      <View style={globalStyles.flexRow} >
-        <View style={{alignSelf: 'flex-start', marginTop:10, marginRight:0}}>
-          <Text style={globalStyles.label}>
-            &#8227;
-          </Text>
-        </View>
-        <View style={{width: "98%", marginLeft:-15}}>
-          <ComponentAutres
-            stateArray={hobbies}
-            reducerFromStore={getHobbies}
-            extraItem="Loisirs, hobbies"
-            placeHolder='Entrez un loisir...'
-          />
-        </View>
+      <View style={{width: "98%", marginLeft:-7.5}}>
+        <ComponentAutres
+          stateArray={hobbies}
+          reducerFromStore={getHobbies}
+          extraItem="Loisirs, hobbies"
+          placeHolder='Entrez un loisir...'
+        />
       </View>
     </SafeAreaView>  
   )

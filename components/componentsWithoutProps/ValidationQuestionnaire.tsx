@@ -36,16 +36,6 @@ const ValidationQuestionnaire: FC = () => {
     
   }, [identity, medicalHistory, dentsInfo, consultationInfo, gencivesInfo, machoireInfo, hygienDentaireInfo, habitudesInfo, esthetiqueInfo, diversInfo])
 
-  // const returnFalseIfUndefinedIsIncluded = (objectToScan: any): boolean=>{
-  //   let arrayValues:any[] = []
-
-  //   for (let value in objectToScan){
-  //     arrayValues = [...arrayValues, objectToScan[value]]
-  //   }
-  //   return arrayValues.includes(undefined) ? false : true
-  // }
-  
-
   const searchPatienteleInAsyncStorage = async(): Promise<string|null|undefined>=>{
     try{
       const arrayPatienteleJSON = await AsyncStorage.getItem('Patientèle')

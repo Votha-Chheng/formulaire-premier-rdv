@@ -12,14 +12,14 @@ import AddText from '../componentsWithProps/AddText'
 
 const ConsultationEnfant: FC = () => {
 
-  const {firstVisitDentiste, dateDerniereConsultation, radiosDentaires, firstVisiteCabinet, commentConnaissezVousLeCabinet} = useSelector((state: RootState)=> state.consultationChild)
+  const {firstVisitDentiste, dateDerniereConsultation, radiosDentaires, firstVisiteCabinet, commentConnaissezVousLeCabinet, motif} = useSelector((state: RootState)=> state.consultationChild)
 
   const dispatch = useDispatch()
   
 
   return (
     <View style={globalStyles.container}>
-      <LabelInputForText question="Quel est le motif de la consultation pour l'enfant ?" reducerFromStore={getMotif} flexRow={false} minLengthForInput={0} width={500} />
+      <LabelInputForText statement={motif} question="Quel est le motif de la consultation pour l'enfant ?" reducerFromStore={getMotif} flexRow={false} minLengthForInput={0} width={500} />
       <View>
         <Label question="Est-ce sa 1ère visite chez le dentiste ?" statement={firstVisitDentiste} />
         <RadioComponent

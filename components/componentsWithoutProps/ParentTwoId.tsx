@@ -50,7 +50,7 @@ const ParentTwoId: FC = () => {
       </View>
         {
           parentTwoOuiNon == true && typeof(parentTwo) !== 'string' && parentTwo !== null && parentTwo !== undefined &&
-          <InfoParent whichParent={parentTwo} reducerFromStore={getParentTwo} />
+          <InfoParent whichParent={parentTwo} reducerFromStore={getParentTwo} parentTwo={true} />
         }
     </View>
   )

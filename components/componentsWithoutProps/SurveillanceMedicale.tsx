@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
 import React, { FC } from 'react'
 import Label from '../componentsWithProps/Label'
 import { useDispatch, useSelector } from 'react-redux'
@@ -10,7 +10,7 @@ import LabelInputForText from '../componentsWithProps/LabelInputFortText'
 
 const SurveillanceMedicale: FC = () => {
 
-  const {surveillanceMedicale, raisonSurveillanceMedicale} = useSelector((state: RootState) => state.etatDeSanteChild)
+  const {surveillanceMedicale, raisonSurveillanceMedicale, periodeSurveillanceMedicale} = useSelector((state: RootState) => state.etatDeSanteChild)
   const dispatch = useDispatch()
 
   return (
@@ -43,6 +43,7 @@ const SurveillanceMedicale: FC = () => {
           />
 
           <LabelInputForText
+            statement={periodeSurveillanceMedicale}
             question="Depuis combien de temps est-il sous surveillance médicale ?" 
             reducerFromStore={getPeriodeSurveillanceMedicale}
             flexRow={false} 
