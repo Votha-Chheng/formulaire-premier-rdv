@@ -26,7 +26,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/square.png",
         "backgroundColor": "#363C51"
-      }
+      },
+      "package": "com.danelectro.questionnairecabinetlenvoleev2"
     },
     "web": {
       "favicon": "./assets/Recto-simple.png"

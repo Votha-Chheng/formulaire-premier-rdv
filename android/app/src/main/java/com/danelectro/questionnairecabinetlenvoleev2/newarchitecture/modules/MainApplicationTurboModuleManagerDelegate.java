@@ -1,4 +1,4 @@
-package com.formdentistetsc.newarchitecture.modules;
+package com.danelectro.questionnairecabinetlenvoleev2.newarchitecture.modules;
 
 import com.facebook.jni.HybridData;
 import com.facebook.react.ReactPackage;

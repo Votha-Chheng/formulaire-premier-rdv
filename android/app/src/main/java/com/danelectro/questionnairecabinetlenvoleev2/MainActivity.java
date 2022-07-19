@@ -1,4 +1,4 @@
-package com.formdentistetsc;
+package com.danelectro.questionnairecabinetlenvoleev2;
 
 import android.os.Build;
 import android.os.Bundle;

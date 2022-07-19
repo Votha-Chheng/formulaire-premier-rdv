@@ -1,4 +1,4 @@
-package com.formdentistetsc.newarchitecture;
+package com.danelectro.questionnairecabinetlenvoleev2.newarchitecture;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
@@ -19,9 +19,9 @@ import com.facebook.react.fabric.CoreComponentsRegistry;
 import com.facebook.react.fabric.EmptyReactNativeConfig;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.formdentistetsc.BuildConfig;
-import com.formdentistetsc.newarchitecture.components.MainComponentsRegistry;
-import com.formdentistetsc.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
+import com.danelectro.questionnairecabinetlenvoleev2.BuildConfig;
+import com.danelectro.questionnairecabinetlenvoleev2.newarchitecture.components.MainComponentsRegistry;
+import com.danelectro.questionnairecabinetlenvoleev2.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
 import java.util.List;
 
