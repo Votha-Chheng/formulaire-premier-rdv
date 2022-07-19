@@ -1,10 +1,35 @@
 {
+  "name": "Questionnaire cabinet L'Envolée",
+  "displayName": "Questionnaire cabinet L'Envolée",
   "expo": {
-    "name": "form-dentiste-tsc",
-    "slug": "form-dentiste-tsc",
+    "name": "Questionnaire cabinet L'Envolée v.2",
+    "slug": "questionnaire-cabinet-l-envoleev2",
+    "description": "Questionnaire de renseignements pour le patient lors d'un premier rendez-vous.",
     "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/square.png",
+    "splash": {
+      "image": "./assets/splash-2.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#363C51"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/square.png",
+        "backgroundColor": "#363C51"
+      }
+    },
+    "web": {
+      "favicon": "./assets/Recto-simple.png"
+    }
   }
 }
