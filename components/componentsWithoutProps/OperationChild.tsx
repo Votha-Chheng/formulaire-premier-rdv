@@ -6,6 +6,7 @@ import { RootState } from '../../store/store'
 import RadioComponent from '../componentsWithProps/RadioComponent'
 import { getListeOperations, getOperationOuiNon } from '../../store/childState/etatSanteChild'
 import ComponentAutresForObject from '../componentsWithProps/ComponentAutresForObject'
+import { globalStyles } from '../../globalStyles'
 
 const OperationChild: FC = () => {
 
@@ -14,7 +15,7 @@ const OperationChild: FC = () => {
   const dispatch = useDispatch()
 
   return (
-    <View>
+    <View style={globalStyles.marginBottomSpace}>
       <View>
         <Label question="A-t-il déjà subi une opération ?" statement={operationOuiNon} />
         <RadioComponent

@@ -20,7 +20,7 @@ const LabelInputForText:FC<LabelInputForTextProps> = ({statement, question, redu
   const dispatch = useDispatch()
 
   return (
-    <View style={flexRow === true ? [globalStyles.flexRow, {alignItems:"flex-start", marginVertical:20}]: {marginBottom:20}}>
+    <View style={flexRow === true ? [globalStyles.flexRow, {alignItems:"flex-start"}]: {marginBottom:20}}>
       <Label
         statement={statement}
         question={question}

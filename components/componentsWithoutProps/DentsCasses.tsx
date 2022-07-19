@@ -14,7 +14,7 @@ const DentsCasses: FC = () => {
   const dispatch = useDispatch()
 
   return (
-    <View>
+    <View style={{marginBottom:20}}>
       <View>
         <Label
           statement={dentCasseOuiNon}

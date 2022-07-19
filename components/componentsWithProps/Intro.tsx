@@ -12,9 +12,9 @@ const Intro: FC<IntroProps> = ({adultForm} : IntroProps) => {
   return (
     <View>
       <Logo/>
-      <Titles title="Questionnaire médical" />
+      <Titles title={`Questionnaire médical ${adultForm===true ? "adulte": "enfant"}`} />
       {
-        adultForm 
+        adultForm === true
         ?
         <Text style={globalStyles.texte}>
           {'\t'}Afin de vous soigner en toute sécurité, un historique détaillé de votre état de santé générale et dentaire est de la plus grande importance. C’est pourquoi nous vous remercions de répondre avec soin aux questions suivantes. Ces informations resteront strictement confidentielles. Par ailleurs, nous discuterons ensemble de cet historique en détails. 

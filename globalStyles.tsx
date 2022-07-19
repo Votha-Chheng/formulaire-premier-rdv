@@ -45,5 +45,8 @@ export const globalStyles = StyleSheet.create({
     fontSize:17,
     textAlign:"justify",
     lineHeight : 25
+  },
+  marginBottomSpace:{
+    marginBottom:20
   }
 })

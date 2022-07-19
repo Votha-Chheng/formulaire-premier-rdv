@@ -3,7 +3,7 @@ import React, { FC, useEffect, useState } from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { globalStyles } from '../globalStyles'
 import { Button } from 'react-native-paper'
-import { displayDateNormal, getHTMLAdultForm } from '../utils'
+import { displayDateNormal, getHTMLAdultForm, getHTMLChildForm } from '../utils'
 import * as Print from 'expo-print';
 import { shareAsync } from 'expo-sharing'
 import { moveAsync } from 'expo-file-system'
@@ -18,16 +18,17 @@ const ListFichesPatients: FC = () => {
 
       if(arrayPatienteleJSON!==null){
         const arrayPatientele = JSON.parse(arrayPatienteleJSON)
-
+        
         setListePatients(arrayPatientele)
+        console.log("listePatients :", listePatients)
 
       } else {
 
         setListePatients(null)
+        console.log("listePatients :", listePatients)
       }
 
 
-      console.log("listePatients :", listePatients)
 
       return
       
@@ -51,7 +52,7 @@ const ListFichesPatients: FC = () => {
   const exportFile = async (values: any, name: string) => {
     // On iOS/android prints the given html. On web prints the HTML from the current page.
     const { uri } = await Print.printToFileAsync({
-      html : getHTMLAdultForm(values)
+      html : values.isAdult === true ? getHTMLAdultForm(values) : getHTMLChildForm(values)
     });
     console.log('File has been saved to:', uri);
 
@@ -73,7 +74,7 @@ const ListFichesPatients: FC = () => {
       </Text>
       <View style={{alignItems:'center'}}>
         {
-          listePatients!==null 
+          listePatients!==null && listePatients!== undefined && listePatients.length>0
           ?
           listePatients.reverse().map((liste, index)=>(
             <View 
@@ -107,8 +108,8 @@ const ListFichesPatients: FC = () => {
             </View>
           ))
           : 
-          <View style={{flex:1, justifyContent:"center"}}>
-            <Text style={{fontFamily:"FrankRuhlLibre_400Regular", fontSize:25}}>Aucun patient dans la base de données.</Text> 
+          <View style={{justifyContent:"center", alignItems:"center", height:"75%", width:"100%"}}>
+            <Text style={{fontFamily:"FrankRuhlLibre_400Regular", fontSize:25, color:"black"}}>Aucun patient dans la base de données.</Text> 
           </View>
         }
 

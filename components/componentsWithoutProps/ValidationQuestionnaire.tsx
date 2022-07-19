@@ -56,7 +56,7 @@ const ValidationQuestionnaire: FC = () => {
 
   const saveAsyncStorageInJSON = async ()=>{
     try {
-      const values = {...identity, ...medicalHistory, ...dentsInfo, ...consultationInfo, ...gencivesInfo, ...machoireInfo, ...hygienDentaireInfo, ...habitudesInfo, ...esthetiqueInfo, ...diversInfo}
+      const values = {isAdult: true, ...identity, ...medicalHistory, ...dentsInfo, ...consultationInfo, ...gencivesInfo, ...machoireInfo, ...hygienDentaireInfo, ...habitudesInfo, ...esthetiqueInfo, ...diversInfo}
 
       const resultPatientele = await searchPatienteleInAsyncStorage()
 

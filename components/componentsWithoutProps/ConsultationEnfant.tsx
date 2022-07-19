@@ -67,6 +67,7 @@ const ConsultationEnfant: FC = () => {
           }}
         />
       </View>
+      
       <AddText 
         dispatcher={dispatch} 
         reducerFromStore={getCommentConnaissezVousLeCabinet} 

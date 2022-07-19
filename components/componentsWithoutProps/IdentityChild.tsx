@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../store/store'
 import { TextInput } from 'react-native-paper'
 import { onValidateLengthInput } from '../../utils'
-import { getAdresse, getCodePostal, getDateDeNaissance, getFratrie, getHobbies, getNbreFrereSoeur, getNiveauScolaire, getNom, getPlace, getPrenom, getTelEnfant, getVille } from '../../store/childState/identityChild'
+import { getAdresse, getCodePostal, getDateDeNaissance, getDateRdv, getFratrie, getHobbies, getNbreFrereSoeur, getNiveauScolaire, getNom, getPlace, getPrenom, getTelEnfant, getVille } from '../../store/childState/identityChild'
 import Label from '../componentsWithProps/Label'
 import RadioComponent from '../componentsWithProps/RadioComponent'
 import MultipleRadioComponent from '../componentsWithProps/MultipleRadioComponent'
@@ -16,10 +16,11 @@ import LabelInputForText from '../componentsWithProps/LabelInputFortText'
 const IdentityChild:FC = () => {
 
   const {
+    dateRdv,
     nom,
     prenom,
     dateDeNaissance,
-    telEnfant,
+    //telEnfant,
     adresse,
     codePostal,
     ville,
@@ -29,8 +30,6 @@ const IdentityChild:FC = () => {
     nbreFrereSoeur,
     place
   } = useSelector((state: RootState) => state.identityChild )
-
-  const [checked, setChecked] = useState<string>('')
 
   const [inputNumber, setInputNumber] = useState<string>("")
   const [errorInputNumber, setErrorInputNumber] = useState<boolean>(false)
@@ -72,6 +71,12 @@ const IdentityChild:FC = () => {
   
   return (
     <SafeAreaView style={[globalStyles.container]}>
+      <View style={[globalStyles.flexRow, {height: 70, alignItems:"center"}]}>
+        <Text style={globalStyles.label}>
+          &#8227; Date du rendez-vous :
+        </Text>
+        <BirthComponent statement={dateRdv} reducerFromStore={getDateRdv} />
+      </View>
       <View style={{marginBottom:20}}>
         <Label
           statement={nom}
@@ -95,7 +100,7 @@ const IdentityChild:FC = () => {
         />
       </View>
         
-      <View style={globalStyles.flexRow}>
+      <View style={[globalStyles.flexRow, {alignItems:'center'}]}>
         <Label
           question="Date de naissance "
           statement={dateDeNaissance}
@@ -103,31 +108,31 @@ const IdentityChild:FC = () => {
         <BirthComponent statement={dateDeNaissance} reducerFromStore={getDateDeNaissance} />
       </View>
 
-      <View>
-        <View style={[globalStyles.flexRow, {marginBottom:0}]}>
-          <Text style={globalStyles.label}>
-            &#8227; N° de téléphone de l'enfant (s'il en a un) :
-          </Text>
-          <TextInput
-            keyboardType="numeric"  
-            style={[globalStyles.input, {width:175}]}
-            maxLength={10}
-            onChangeText={(text)=>onValidateNumber(text.trim())}
-            onBlur = {()=> onBlurNumberTelHandle(inputNumber)}
-            value={inputNumber}
-          />
-          {
-            errorInputNumber &&
-            <Text style={{alignSelf:"flex-start", marginLeft:10, color:"purple"}}>
-              *
-            </Text>
-          }
-        </View>
+ 
+      <View style={[globalStyles.flexRow, {marginBottom:20}]}>
+        <Text style={globalStyles.label}>
+          &#8227; N° de téléphone de l'enfant (s'il en a un) :
+        </Text>
+        <TextInput
+          keyboardType="numeric"  
+          style={[globalStyles.input, {width:175}]}
+          maxLength={10}
+          onChangeText={(text)=>onValidateNumber(text.trim())}
+          onBlur = {()=> onBlurNumberTelHandle(inputNumber)}
+          value={inputNumber}
+        />
         {
           errorInputNumber &&
-          <Text style={{color:"purple", textAlign:'right'}} >Rentrez un numéro de téléphone valide si vous en avez un.</Text>
+          <Text style={{alignSelf:"flex-start", marginLeft:10, color:"purple"}}>
+            *
+          </Text>
         }
       </View>
+      {
+        errorInputNumber &&
+        <Text style={{color:"purple", textAlign:'right'}} >Rentrez un numéro de téléphone valide si vous en avez un.</Text>
+      }
+
       
       <View style={{marginBottom:20}}>
         <Label

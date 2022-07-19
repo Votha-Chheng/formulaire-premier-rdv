@@ -104,7 +104,7 @@ const App: FC = () => {
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <RootStack.Navigator initialRouteName='Home'>
+        <RootStack.Navigator initialRouteName='Home' screenOptions={{headerShown: false}} >
           <RootStack.Screen name='Home' component={HomeScreen} />
           <RootStack.Screen name='AdultForm' component={AdultFormScreen} />
           <RootStack.Screen name='ChildForm' component={ChildFormScreen} />

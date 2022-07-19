@@ -6,6 +6,7 @@ import { RootState } from '../../store/store'
 import RadioComponent from '../componentsWithProps/RadioComponent'
 import { getListeMedicamentsChild, getPriseMedicamentsChild } from '../../store/childState/etatSanteChild'
 import ComponentAutresForObject from '../componentsWithProps/ComponentAutresForObject'
+import { globalStyles } from '../../globalStyles'
 
 const MedicamentChild: FC = () => {
   const {priseMedicamentsChild, listeMedicamentsChild} = useSelector((state: RootState) => state.etatDeSanteChild)
@@ -13,7 +14,7 @@ const MedicamentChild: FC = () => {
   const dispatch = useDispatch()
 
     return (
-    <View>
+    <View style={globalStyles.marginBottomSpace}>
       <View>
         <Label question="Prend-il des médicaments en ce moment ?" statement={priseMedicamentsChild} />
         <RadioComponent

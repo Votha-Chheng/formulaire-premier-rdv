@@ -168,6 +168,7 @@ const EtatSanteBoucheChild: FC = () => {
             reducerFromStore={getListeCraintesGenerales}
             extraItem="Quels sont ses craintes ?"
             placeHolder="Ecrivez ici une de ses craintes..."
+            width={400}
           />
         }
       </View>

@@ -17,19 +17,19 @@ const BirthComponent:FC<BirthComponentProps> = ({statement, reducerFromStore}: B
   const showDatePickerBirth = (currentMode:any) => {
     DateTimePickerAndroid.open({
       value: new Date(),
-      onChange : (event: any, date:any)=>{
-        dispatch(reducerFromStore(date.toString()))
+      onChange : (event: any, statement:any)=>{
+        dispatch(reducerFromStore(statement.toString()))
       },
       mode: currentMode,
       display: "spinner"
     })
   }
   return (
-    <View style={globalStyles.flexRow}>
+    <View style={[globalStyles.flexRow, {marginTop:10, alignSelf:'flex-end'}]}>
       <Text style={{marginHorizontal:10, fontSize:15, marginBottom:5, fontWeight:"bold", color :`${statement === undefined ? "red": "green"}`}}>
         {statement !== undefined && displayDateNormal(statement)}
       </Text>
-      <Button style={{marginBottom:5}} color="#2086EB" labelStyle={{fontSize:12.5}} onPress={()=>showDatePickerBirth("date")} mode="contained">
+      <Button style={{marginTop:0}} color="#2086EB" labelStyle={{fontSize:12.5}} onPress={()=>showDatePickerBirth("date")} mode="contained">
         Choisir date
       </Button>
     </View>

@@ -7,6 +7,7 @@ import RadioComponent from '../componentsWithProps/RadioComponent'
 import { getPeriodeSurveillanceMedicale, getRaisonSurveillanceMedicale, getSurveillanceMedicale } from '../../store/childState/etatSanteChild'
 import AddText from '../componentsWithProps/AddText'
 import LabelInputForText from '../componentsWithProps/LabelInputFortText'
+import { globalStyles } from '../../globalStyles'
 
 const SurveillanceMedicale: FC = () => {
 
@@ -14,7 +15,7 @@ const SurveillanceMedicale: FC = () => {
   const dispatch = useDispatch()
 
   return (
-    <View>
+    <View style={globalStyles.marginBottomSpace}>
       <View>
         <Label question="Est-il sous surveillance médicale ?" statement={surveillanceMedicale} />
         <RadioComponent

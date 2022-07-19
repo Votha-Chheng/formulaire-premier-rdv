@@ -14,7 +14,7 @@ const BoissonChildComponent:FC = () => {
   const dispatch = useDispatch()
 
   return (
-    <View>
+    <View style={{marginBottom:20}}>
       <View>
         <Label
           question="Consomme-t-il des boissons autres que de l’eau ?"

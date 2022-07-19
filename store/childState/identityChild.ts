@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export interface IdentityChildState {
+  dateRdv: string
   nom ?: string //
   prenom?:string //
   dateDeNaissance?:string, //
@@ -16,6 +17,7 @@ export interface IdentityChildState {
 }
 
 const initialState: IdentityChildState = {
+  dateRdv: (new Date()).toString(),
   nom : undefined, //
   prenom: undefined, //
   dateDeNaissance: undefined, //
@@ -35,6 +37,7 @@ const identityChildSlice = createSlice({
   initialState,
   reducers: {
     resetIdentityChild: (state) => {
+      state.dateRdv = (new Date()).toString()
       state.nom = undefined, //
       state.prenom= undefined, //
       state.dateDeNaissance= undefined, //
@@ -47,6 +50,9 @@ const identityChildSlice = createSlice({
       state.fratrie = undefined,
       state.nbreFrereSoeur= 0,
       state.place = undefined
+    },
+    getDateRdv: (state, action) =>{
+      state.dateRdv = action.payload
     },
     getNom: (state, action) => {
       state.nom = action.payload
@@ -87,6 +93,21 @@ const identityChildSlice = createSlice({
   }
 })
 
-export const {resetIdentityChild, getNom, getPrenom, getDateDeNaissance, getTelEnfant, getAdresse, getCodePostal, getVille, getFratrie, getHobbies, getNbreFrereSoeur, getNiveauScolaire, getPlace} = identityChildSlice.actions
+export const {
+  resetIdentityChild,
+  getDateRdv,
+  getNom,
+  getPrenom,
+  getDateDeNaissance,
+  getTelEnfant,
+  getAdresse,
+  getCodePostal,
+  getVille,
+  getFratrie,
+  getHobbies,
+  getNbreFrereSoeur,
+  getNiveauScolaire,
+  getPlace
+} = identityChildSlice.actions
 
 export default identityChildSlice.reducer

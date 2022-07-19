@@ -137,7 +137,7 @@ const IdentityPart: FC = () => {
       </View> 
 
 
-      <View style={globalStyles.flexRow}>
+      <View style={[globalStyles.flexRow, {alignItems:"center"}]}>
         <Label
           question="Date de naissance "
           statement={dateDeNaissance}
