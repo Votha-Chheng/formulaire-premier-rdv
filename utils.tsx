@@ -536,9 +536,9 @@ export const getHTMLChildForm = (value:any) => {
           <li>
           ${
             value.fratrie === true ?
-            "<span>Nombre de frère et soeur : " + value.nbreFrereSoeur + "</span> <br/> <span>Place dans la fratrie : "+ value.place + "</span>"
+            "<span style='font-weight: bold;'>Nombre de frère et soeur : " + value.nbreFrereSoeur + "</span> <br/> <span>Place dans la fratrie : "+ value.place + "</span>"
             :
-            "Pas de frères et soeurs."
+            "<span style='font-weight: bold;'>Pas de frères et soeurs.</span>"
           }
           </li>
 
@@ -554,7 +554,7 @@ export const getHTMLChildForm = (value:any) => {
               :
               ""
             }
-            <div style='font-weight: bold;margin-bottom:5px;text-decoration:underline;'>
+            <div style='font-weight: bold;margin:10px 0;text-decoration:underline;'>
               ${
                 value.responsablesParents === false ?
                 "Responsable légal 1"
@@ -583,7 +583,7 @@ export const getHTMLChildForm = (value:any) => {
               ""
             }
 
-            <div style='font-weight: bold;margin-bottom:5px;text-decoration:underline;margin:5px,0;'>
+            <div style='font-weight: bold;margin:10px 0;text-decoration:underline;margin:5px,0;'>
               ${
                 value.responsablesParents === false && typeof(value.parentTwo) !=='string' ?
                 "Responsable légal 2"
@@ -601,15 +601,14 @@ export const getHTMLChildForm = (value:any) => {
 
             ${
               value.parentTwo !== null && typeof(value.parentTwo) !== 'string' ?
-              `<li> <span style='font-weight: bold;'>Nom : </span> <span> ${value.parentTwo.nom} </span></li><li><span style='font-weight: bold;'>Prénom : </span> <span>${value.parentTwo.prenom}</span></li>
-              <li><span style='font-weight: bold;'>Tél : </span> <span>${value.parentTwo.tel}</span></li><li><span style='font-weight: bold;'>Profession : </span> <span>${value.parentTwo.profession}</span></li>
+              `<li> <span style='font-weight: bold;'>Nom : </span> <span> ${value.parentTwo.nom} </span></li>
+              <li><span style='font-weight: bold;'>Prénom : </span> <span>${value.parentTwo.prenom}</span></li>
+              <li><span style='font-weight: bold;'>Tél : </span> <span>${value.parentTwo.tel}</span></li>
+              <li><span style='font-weight: bold;'>Profession : </span> <span>${value.parentTwo.profession}</span></li>
               ${
-                value.parentTwo.emailOuiNon === true &&
-                "<li><span style='font-weight: bold;'>E-mail : </span> <span>"+ value.parentTwo.email + "</span></li>"
-              }
-              <li>
-                <span style="font-weight: bold;">Profession : </span> <span>${value.parentTwo.profession} </span>
-              </li>`
+                value.parentTwo.emailOuiNon === true ?
+                "<li><span style='font-weight: bold;'>E-mail : </span> <span>"+ value.parentTwo.email + "</span></li>" : ""
+              }`
               :
               ""
             }
@@ -629,7 +628,7 @@ export const getHTMLChildForm = (value:any) => {
             </li>
             <li>
               ${
-                value.firstVisiteDentaire === true ?
+                value.firstVisitDentiste === true ?
                 "<span style='font-weight: bold;color:red;'>Première visite chez le dentiste.</span>"
                 :
                 "<span style='font-weight: bold;'>Dernière visite chez le dentiste le : " + displayDateNormal(value.dateDerniereConsultation) + "</span>"
@@ -662,7 +661,7 @@ export const getHTMLChildForm = (value:any) => {
               ${
                 value.surveillanceMedicale===true ?
                 `<span style='color:red;'>
-                  Surveillé depuis le ${value.periodeSurveillanceMedicale} pour ${value.raisonSurveillanceMedicale}
+                  | Surveillé(e) ${value.periodeSurveillanceMedicale} pour ${value.raisonSurveillanceMedicale}
                 </span>`
                 :
                 ""
@@ -673,12 +672,12 @@ export const getHTMLChildForm = (value:any) => {
               <span  style="color:${value.priseMedicamentsChild===true ? 'red':'black'}">${returnOuiNon(value.priseMedicamentsChild)}</span>
               ${
                 value.priseMedicamentsChild===true ?
-                `<div style="margin-left:10px;color:red;">
+                `<span style="color:red;"> || 
                   ${
                     value.listeMedicamentsChild.map((medic:MedicamentsChild) => (
-                      `<div>
-                        ${medic.nomMedicament} tous/toutes les ${medic.frequence}
-                      </div>`
+                      `<span>
+                        ${medic.nomMedicament} tous/toutes les ${medic.frequence} 
+                      </span>`
                     ))
                   }
                 </div>`
@@ -690,50 +689,50 @@ export const getHTMLChildForm = (value:any) => {
             <li>
               <span style="font-weight: bold;">Allergies médicamenteuses : </span>
               <span  style="color:${value.allergiesMedicamentsOuiNon===true ? 'red':'black'}">${returnOuiNon(value.allergiesMedicamentsOuiNon)}</span>
+              ${
+                value.allergiesMedicamentsOuiNon===true ?
+                `<span style="color:red;"> || ${ value.listeAllergiesMedicaments.join(",")}</span>`
+                :""
+              }
             </li>
-            ${
-              value.allergiesMedicamentsOuiNon===true ?
-              `<li>${ value.listeAllergiesMedicaments.join(",")}</li>`
-              :""
-            }
 
             <li>
               <span style="font-weight: bold;">Maladie(s) grave(s) : </span>
               <span style="color:${value.maladieGraveOuiNon===true ? 'red':'black'}">${returnOuiNon(value.maladieGraveOuiNon)}</span>
+              ${
+                value.maladieGraveOuiNon===true ?
+                `<span style="color:red;">
+                  ${
+                    value.listeMaladiesGraves.map((maladie:MaladieGraveChild) => (
+                      `<span>
+                        || ${maladie.nomMaladie} à l'âge de ${maladie.age} an(s)
+                      </span>`
+                    ))
+                  }
+                </span>`
+                :
+                ""
+              }
             </li>
-            ${
-              value.maladieGraveOuiNon===true ?
-              `<li>
-                ${
-                  value.listeMaladiesGraves.map((maladie:MaladieGraveChild) => (
-                    `<div>
-                      ${maladie.nomMaladie} à l'âge de ${maladie.age} an(s)
-                    </div>`
-                  ))
-                }
-              </li>`
-              :
-              ""
-            }
 
             <li>
               <span style="font-weight: bold;">A-t-il déjà été opéré ? : </span>
               <span style="color:${value.operationOuiNon===true ? 'red':'black'}">${returnOuiNon(value.operationOuiNon)}</span>
+              ${
+                value.operationOuiNon===true ?
+                `<span> 
+                  ${
+                    value.listeOperations.map((maladie:OperationChild) => (
+                      `<span>
+                        || ${maladie.cause} à l'âge de ${maladie.age} an(s)
+                      </span>`
+                    ))
+                  }
+                </span>`
+                :
+                ""
+              }
             </li>
-            ${
-              value.operationOuiNon===true ?
-              `<li>
-                ${
-                  value.listeOperations.map((maladie:OperationChild) => (
-                    `<div>
-                      ${maladie.cause} à l'âge de ${maladie.age} an(s)
-                    </div>`
-                  ))
-                }
-              </li>`
-              :
-              ""
-            }
 
             <li>
               <span style="font-weight: bold;">Autres antécédents médicaux : </span>
@@ -772,26 +771,26 @@ export const getHTMLChildForm = (value:any) => {
               <span style="color:${value.sucrerieOuiNon===true ? 'red':'black'}">${returnOuiNon(value.sucrerieOuiNon)} </span>
               ${
                 value.sucrerieOuiNon === true ?
-                `<span>| ${value.frequenceSucrerie}</span>`
+                `<span style="color:red;">|| ${value.frequenceSucrerie}</span>`
                 :
                 ""
               }
             </li>
 
             <li>
-              <span style="font-weight: bold;">Sucreries : </span>
+              <span style="font-weight: bold;">Boissons (hors eau) : </span>
               <span style="color:${value.sodaOuiNon===true ? 'red':'black'}">${returnOuiNon(value.sodaOuiNon)} </span>
               ${
                 value.sodaOuiNon===true ?
-                `<div>
+                `<span style="color:red;">
                   ${
                     value.sodasListe.map((maladie:Boisson) => (
                       `<span>
-                        ${maladie.boisson} tous/toutes les ${maladie.frequence} an(s)
-                      </span><br/>`
+                        || ${maladie.boisson} tous/toutes les ${maladie.frequence} an(s) 
+                      </span>`
                     ))
                   }
-                </div>`
+                </span>`
                 :
                 ""
               }
@@ -804,18 +803,22 @@ export const getHTMLChildForm = (value:any) => {
 
             <li>
               <span style="font-weight: bold;">Lui a-t-on déjà enlevé une dent ? : </span>
+              <span style="color:${value.dentEnleveOuiNon===true ? 'red':'black'}">${returnOuiNon(value.dentEnleveOuiNon)}</span>
+            </li>
+            <li>
+              <span style="font-weight: bold;">Dent(s) cassé(s) : </span>
               <span style="color:${value.dentCasseOuiNon===true ? 'red':'black'}">${returnOuiNon(value.dentCasseOuiNon)}</span>
               ${
                 value.dentCasseOuiNon===true ?
-                `<div>
+                `<span style="color:red;">  
                   ${
                     value.dentCasse.map((dent:DentCasse) => (
                       `<span>
-                        ${dent.nomDentCasse} en ${dent.comment}
-                      </span><br/>`
+                        || ${dent.nomDentCasse} en ${dent.comment} 
+                      </span>`
                     ))
                   }
-                </div>`
+                </span>`
                 :
                 ""
               }
@@ -834,7 +837,7 @@ export const getHTMLChildForm = (value:any) => {
             <li>
             ${
               value.habitudesChild.length>0 ?
-              `<span>${value.habitudesChild.join(", ")} </span>`
+              `<span style="font-weight: bold;">Habitudes : </span><span style="color:red">${value.habitudesChild.join(", ")} </span>`
               :
               "<span>Pas de mauvaises habitudes (pouce, tétine, ongle rongé).</span>"
             }
@@ -858,7 +861,7 @@ export const getHTMLChildForm = (value:any) => {
             <li>
             ${
               value.troubleSommeil.length>0 ?
-              `<span style="font-weight: bold;">Trouble(s) du sommeil : </span><span>${value.troubleSommeil.join(", ")} </span>`
+              `<span style="font-weight: bold;">Trouble(s) du sommeil : </span><span style="color:red;">${value.troubleSommeil.join(", ")} </span>`
               :
               "<span>Pas de troubles du sommeil.</span>"
             }
@@ -867,7 +870,7 @@ export const getHTMLChildForm = (value:any) => {
             <li>
             ${
               value.craintesGeneralesOuiNon === true ?
-              `<span style="font-weight: bold;">Phobies, craintes : </span><span>${value.listeCraintesGenerales.join(", ")} </span>`
+              `<span style="font-weight: bold;">Phobies, craintes : </span><span style="color:red;">${value.listeCraintesGenerales.join(", ")} </span>`
               :
               "<span>Pas de phobies particulières.</span>"
             }
@@ -881,7 +884,7 @@ export const getHTMLChildForm = (value:any) => {
             <li>
             ${
               value.remarquesUtilesOuiNon === true ?
-              `<span style="font-weight: bold;">Remarques utiles : </span><span>${value.remarquesUtiles.join(", ")} </span>`
+              `<span style="font-weight: bold;">Remarques utiles : </span><span>${value.remarquesUtiles} </span>`
               :
               "<span>Pas de remarque à ajouter.</span>"
             }

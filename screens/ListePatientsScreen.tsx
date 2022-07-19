@@ -43,8 +43,8 @@ const ListFichesPatients: FC = () => {
 
 
   const printPDF = async (values:any) => {
-    const response = await Print.printAsync({
-      html : getHTMLAdultForm(values),
+    await Print.printAsync({
+      html : values.isAdult === true ? getHTMLAdultForm(values) : getHTMLChildForm(values)
     });
 
   }
